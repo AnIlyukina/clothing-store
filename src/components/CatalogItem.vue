@@ -4,7 +4,7 @@
     <p>{{productData.name}}</p>
     <p>Price: {{productData.price}} p.</p>
     <button 
-      @click="sendDataToParent"
+      @click="selectedProduct"
     > Add to cart
     </button>
   </div>
@@ -22,8 +22,8 @@ export default {
     }
   },
   methods:{
-    sendDataToParent(){
-      this.$emit('sendDataToParent', this.productData.article)
+    selectedProduct(){
+      this.$emit('selectedProduct', this.productData)
     }
   }
 }

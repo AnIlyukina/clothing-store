@@ -6,7 +6,7 @@
         v-for="product in products"
         :key="product.article"
         :productData = 'product'
-        @sendDataToParent='showArticle'
+        @selectedProduct='selectedProduct'
       />
     </div>
   </section>
@@ -34,10 +34,11 @@ export default {
   },
   methods:{
     ...mapActions([
-      'getProductsFromApi'
+      'getProductsFromApi',
+      'addToCart'
     ]),
-    showArticle(article){
-      console.log(article)
+    selectedProduct(data){
+      this.addToCart(data)
     }
   },
   mounted(){
