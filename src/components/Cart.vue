@@ -1,6 +1,10 @@
 <template>
   <section class='cart'>
+    <router-link :to="{name: 'catalog'}">
+      <div class="cart__catalog-icon">back to Catalog</div>
+    </router-link>
     <h2>Cart</h2>
+    <p v-if="!cart_data.length">There are no products in cart...</p>
       <CartItem 
         v-for="item, index in cart_data"
         :key="item.article"
@@ -41,5 +45,9 @@ export default {
 </script>
 
 <style>
-
+.cart__catalog-icon{
+  max-width: 150px;
+  padding: 5px;
+  background-color: rgba(71, 141, 141, 0.281);
+}
 </style>

@@ -1,5 +1,8 @@
 <template>
   <section class="catalog">
+    <router-link :to="{name: 'cart', params: {cart_data: CART}}">
+      <div class="catalog__cart-icon">Cart : {{CART.length}}</div>
+    </router-link>
     <h1>Catalog</h1>
     <div class="catalog__list">
       <CatalogItem
@@ -29,7 +32,8 @@ export default {
   },
    computed:{
     ...mapGetters([
-      'products'
+      'products',
+      'CART'
     ])
   },
   methods:{
@@ -55,5 +59,11 @@ export default {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+}
+
+.catalog__cart-icon{
+  max-width: 100px;
+  padding: 5px;
+  background-color: rgba(71, 141, 141, 0.281);
 }
 </style>
