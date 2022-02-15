@@ -7,8 +7,9 @@
       <p>{{cart_item_data.article}}</p>
     </div>
     <div class="cart__item-quantity">
-      <p>Qty:</p> 
+      <span @click='decrementItem'>-</span> 
       {{cart_item_data.quantity}}
+      <span @click='incrementItem'>+</span> 
     </div>
     <button
       @click='deleteCartItem'>
@@ -18,6 +19,8 @@
 </template>
 
 <script>
+
+
 export default {
   name:'CartItem',
   props:{
@@ -32,9 +35,16 @@ export default {
     this.$set(this.cart_item_data, 'quantity', 1)
   },
   methods:{
+
     deleteCartItem(){
       console.log('sfas')
       this.$emit('deleteCartItem')
+    },
+    decrementItem(){
+       this.$emit('decrement')
+    },
+    incrementItem(){
+       this.$emit('increment')
     }
   }
 }
