@@ -1,7 +1,10 @@
 <template>
   <section class="main__wrapper">
       <Catalog/>
-      <Cart v-if="cart.length"/>
+      <Cart 
+        v-if="CART.length"
+        :cart_data='CART'
+      />
   </section>
 </template>
 
@@ -9,7 +12,7 @@
 
 import Catalog from './Catalog.vue';
 import Cart from './Cart.vue';
-import {mapGetters} from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name:'MainWrapper',
@@ -18,7 +21,7 @@ export default {
     Cart,
   },
   props:{
-
+  
   },
   data(){
     return{
@@ -27,7 +30,7 @@ export default {
   },
   computed:{
     ...mapGetters([
-      'cart',
+      'CART',
     ])
   },
   methods:{

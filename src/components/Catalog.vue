@@ -38,6 +38,7 @@ export default {
       'addToCart'
     ]),
     selectedProduct(data){
+      console.log('добавить в корзину')
       this.addToCart(data)
     }
   },
