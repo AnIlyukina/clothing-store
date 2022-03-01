@@ -4,6 +4,12 @@
       <div class="catalog__cart-icon">Cart : {{CART.length}}</div>
     </router-link>
     <h1>Catalog</h1>
+    <Select
+      :options="options"
+      @select='selectOption'
+      :selected='selectedOption'
+    />
+    <span>Selected: {{selectedOption}}</span>
     <div class="catalog__list">
       <CatalogItem
         v-for="product in PRODUCTS"
@@ -18,16 +24,25 @@
 <script>
 
 import CatalogItem from './CatalogItem.vue'
+import Select from './Select.vue'
 import {mapActions, mapGetters} from 'vuex';
 
 export default {
   name:'Catalog',
   components:{
     CatalogItem,
+    Select,
   },
   data(){
     return {
-      
+      options: [
+        {name:'Option1', value: 1},
+        {name:'Option2', value: 2},
+        {name:'Option3', value: 3},
+        {name:'Option4', value: 4},
+        {name:'Option5', value: 5},
+      ],
+      selectedOption: 'Select',
     }
   },
    computed:{
@@ -44,6 +59,9 @@ export default {
     selectedProduct(data){
       console.log('добавить в корзину')
       this.ADD_TO_CART(data)
+    },
+    selectOption(option){
+      this.selectedOption = option.name
     }
   },
   mounted(){
