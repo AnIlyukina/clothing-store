@@ -6,7 +6,7 @@
     <h1>Catalog</h1>
     <div class="catalog__list">
       <CatalogItem
-        v-for="product in products"
+        v-for="product in PRODUCTS"
         :key="product.article"
         :productData = 'product'
         @selectedProduct='selectedProduct'
@@ -32,22 +32,22 @@ export default {
   },
    computed:{
     ...mapGetters([
-      'products',
+      'PRODUCTS',
       'CART'
     ])
   },
   methods:{
     ...mapActions([
-      'getProductsFromApi',
-      'addToCart'
+      'GET_PRODUCT_TO_STATE',
+      'ADD_TO_CART'
     ]),
     selectedProduct(data){
       console.log('добавить в корзину')
-      this.addToCart(data)
+      this.ADD_TO_CART(data)
     }
   },
   mounted(){
-    this.getProductsFromApi();
+    this.GET_PRODUCT_TO_STATE();
   },
 
 }

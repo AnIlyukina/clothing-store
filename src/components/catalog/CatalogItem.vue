@@ -1,6 +1,6 @@
 <template>
   <div class="catalog__item">
-    <img class="catalog__item-image" :src="require('../assets/images/' + productData.image)"/>
+    <img class="catalog__item-image" :src="require('../../assets/images/' + productData.image)"/>
     <p>{{productData.name}}</p>
     <p>Price: {{productData.price}} p.</p>
     <button @click="selectedProduct"

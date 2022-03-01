@@ -10,10 +10,10 @@ let store = new Vuex.Store({
     cart:[]
   },
   mutations:{
-    setProductToState: (state, products) =>{
+    GET_PRODUCT_TO_STATE: (state, products) =>{
       state.products = products;
     },
-    addToCart:(state, product) =>{
+    ADD_TO_CART:(state, product) =>{
       let isProductExists = false;
       if (state.cart.length) {
         state.cart.map(function (item) {
@@ -42,12 +42,12 @@ let store = new Vuex.Store({
     }
   },
   actions:{
-    getProductsFromApi({commit}){
+    GET_PRODUCT_TO_STATE({commit}){
       return axios('http://localhost:3000/products', {
         method: "GET"
       })
       .then((products) => {
-        commit('setProductToState', products.data);
+        commit('GET_PRODUCT_TO_STATE', products.data);
         return products;
       })
       .catch((error) =>{
@@ -55,8 +55,8 @@ let store = new Vuex.Store({
         return error;
       })
     },
-    addToCart({commit}, product){
-      commit('addToCart', product)
+    ADD_TO_CART({commit}, product){
+      commit('ADD_TO_CART', product)
     },
     DELETE_CART_ITEM({commit}, index){
       commit('DELETE_CART_ITEM', index)
@@ -69,7 +69,7 @@ let store = new Vuex.Store({
     }
   },
   getters:{
-    products(state){
+    PRODUCTS(state){
       return state.products
     },
     CART(state){
